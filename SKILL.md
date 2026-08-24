@@ -32,6 +32,7 @@ agent_created: true
 3. **配定时提醒** → 读 `references/01-搭建步骤.md` 的「第 3 步：配定时提醒」，用 automation 工具创建起床/就寝两个提醒任务（prompt 里调用微信推送命令）
 4. **配微信推送通道** → 读 `references/02-微信推送配置.md`，安装 wechat-clawbot-push MCP 并完成授权，让提醒能推到微信聊天窗口
 5. **写打卡登记交接** → 读 `references/03-打卡登记闭环.md`，生成一份给微信 ClawBot 读的交接文档，让它能解析用户打卡回复并写库
+6. **配周复盘/月总结** → 读 `references/05-复盘与总结.md`，把复盘 SOP 写到用户知识库，并用 automation 工具建周复盘（周日 15:00）+ 月总结（月末 15:00）两个任务，形成"记录 → 复盘 → 建议 → 调整"的完整闭环
 
 ## 核心原则（必须遵守）
 
@@ -49,4 +50,5 @@ agent_created: true
 | `references/02-微信推送配置.md` | 微信 ClawBot 推送通道配置（wechat-clawbot-push） |
 | `references/03-打卡登记闭环.md` | 打卡回复解析 + 写库规则 + 交接文档模板 |
 | `references/04-扩展项目指南.md` | 怎么加第 3、4 个项目 |
+| `references/05-复盘与总结.md` | 周复盘 + 月总结（三合一建议，形成闭环） |
 | `assets/kanban-template.html` | 脱敏后的看板 HTML/JS 模板（含占位符） |
