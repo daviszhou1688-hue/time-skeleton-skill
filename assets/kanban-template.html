@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html data-page-node-id="<你的看板节点ID>" lang="zh-CN">
+<head data-page-node-id="RLnC2fNxhqlBhPV8npSsEF">
+<script data-page-node-id="39BC1AIsk5fxl5GSWts7YO" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="JwNObfqZ4zQYb3HhIXVtSl" charset="UTF-8">
+<meta data-page-node-id="1BC47Gr93e8cJBZirLEQKF" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="rEF9yQ0pv73o5yQANfcm7j" data-pnid-children="VawbY3qcUO3mmgGcHccXs0">时间骨架 · 观测看板</title>
+<style data-page-node-id="Z6FiB8URq5iW6QmMKniDuz" data-pnid-children="TzWAU0uJVfCsA47Yy3IRjV">
+:root{--ok:#1d9e75;--ok-bg:#e1f5ee;--flx:#ba7517;--flx-bg:#faeeda;--mis:#a32d2d;--mis-bg:#fcebeb;--ink:#2c2c2a;--mut:#6f6e68;--line:#e3e1d8;--card:#fff;--bg:#f7f6f3;--acc:#534ab7;--acc-bg:#eeedfe;--blue:#378ADD;--blue-bg:#E6F1FB;--tile:#F1EFE8;--tile-border:#D3D1C7;--bar-green:#1D9E75;--bar-amber:#EF9F27;--bar-red:#E24B4A;--r-md:8px;--r-lg:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;padding:16px 12px 60px;max-width:680px;margin:0 auto}
+.hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.hd h1{font-size:18px;font-weight:500}
+.badge{font-size:11px;padding:3px 10px;border-radius:999px;background:var(--acc-bg);color:var(--acc);font-weight:500}
+.sub{color:var(--mut);font-size:12px;margin:0 0 14px}
+.law{background:var(--acc-bg);color:#3c3489;border-radius:10px;padding:10px 14px;font-size:12px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:14px 18px;margin-bottom:12px}
+.hrow{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px}
+h2{font-size:15px;font-weight:500}
+.std{color:var(--mut);font-size:11px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;display:flex;align-items:center;gap:6px;background:#fff}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:#c9c7be}
+.chip.d-ok{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+.chip.d-ok .dot{background:var(--ok)}
+.chip.d-mid{border-color:var(--flx);color:var(--flx);background:var(--flx-bg)}
+.chip.d-mid .dot{background:var(--flx)}
+.chip.d-bad{border-color:var(--mis);color:var(--mis);background:var(--mis-bg)}
+.chip.d-bad .dot{background:var(--mis)}
+.chip .v{font-weight:500}
+table.wk{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
+table.wk th{font-weight:500;color:var(--mut);padding:6px 2px;text-align:center;font-size:11px;border-bottom:1px solid var(--line)}
+table.wk td{padding:8px 2px;text-align:center;border-bottom:1px dashed var(--line)}
+table.wk td.dow{color:var(--mut);font-size:11px;white-space:nowrap}
+table.wk td.today{background:var(--acc-bg);border-radius:6px}
+table.wk .s{font-size:14px;font-weight:500}
+.s-ok{color:var(--ok)}.s-mid{color:var(--flx)}.s-bad{color:var(--mis)}.s-na{color:#c9c7be}
+table.wk .en{font-size:13px;color:var(--blue);font-weight:500}
+.wk-foot{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.wk-foot .t{font-size:12px;color:var(--mut);margin-bottom:6px}
+.wk-items{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.wk-items .n{font-weight:500}
+.wk-items .good{color:var(--ok)}.wk-items .warn{color:var(--flx)}.wk-items .bad{color:var(--mis)}
+.alert{background:var(--mis-bg);color:var(--mis);border-radius:8px;padding:10px 12px;font-size:12px;margin-top:12px;display:none;line-height:1.5}
+.alert.show{display:block}
+.alert.none{background:var(--ok-bg);color:var(--ok)}
+.rate-row{margin-bottom:12px}
+.rate-row:last-child{margin-bottom:0}
+.rate-head{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;align-items:baseline}
+.rate-head .lbl{font-weight:500}
+.rate-head .val{color:var(--mut)}
+.rate-head .v.good,.rate-head .v.mid,.rate-head .v.bad{font-weight:500}
+.bar{height:10px;border-radius:5px;background:var(--bg);overflow:hidden;display:flex;border:0.5px solid var(--line)}
+.bar .b-ok{background:var(--bar-green)}
+.bar .b-flx{background:var(--bar-amber)}
+.bar .b-mis{background:var(--bar-red)}
+.strip{display:flex;gap:3px;margin-top:10px;justify-content:center;flex-wrap:wrap}
+.cell{width:26px;height:26px;border-radius:6px;font-size:12px;display:flex;align-items:center;justify-content:center;background:var(--tile);color:#b4b2a9;font-weight:500}
+.c-ok{background:var(--ok-bg);color:var(--ok)}.c-flx{background:var(--flx-bg);color:var(--flx)}.c-mis{background:var(--mis-bg);color:var(--mis)}
+.energy-chart{display:flex;align-items:flex-end;gap:10px;height:96px;padding:0 2px;margin-top:12px}
+.e-bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;min-width:0}
+.e-col{width:100%;border-radius:4px 4px 0 0;background:var(--blue);min-height:2px}
+.e-col.e-warn{background:var(--flx)}
+.e-col.e-bad{background:var(--mis)}
+.e-col.e-0{background:#c9c7be}
+.e-lbl{font-size:10px;color:var(--mut)}
+.hist{margin-top:10px}
+.hrow2{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--mut);padding:7px 4px;border-bottom:1px dashed var(--line);align-items:center}
+.tag{padding:1px 8px;border-radius:10px;font-size:11px}
+.t-ok{background:var(--ok-bg);color:var(--ok)}.t-flx{background:var(--flx-bg);color:var(--flx)}.t-mis{background:var(--mis-bg);color:var(--mis)}.t-none{background:var(--tile);color:#b4b2a9}
+h3{font-size:13px;font-weight:500;color:var(--mut);margin-top:14px}
+</style>
+</head>
+<body data-page-node-id="RpTGWS5cZ4FEkPvuKwxQ1G">
+<div data-page-node-id="MP4RCZxns29P4ZUyoinO9S" class="hd"><h1 data-page-node-id="0VXXawcjxGpgFjT4IZrdVw"><!--pnid:YvOS06qj5ufGcbTndTooNH-->时间骨架 · 观测看板</h1><span data-page-node-id="bhf87iLC1fWaXM9XdMJzUg" class="badge"><!--pnid:EfD3ng3aTJFqY7nOEIylfx-->宪法 v1</span></div>
+<div data-page-node-id="TPg9WXfIVY8hogOUuj5cmT" class="sub" id="todayLabel"><!--pnid:waAy9by7FWHRk5suB0tqCD-->加载中…</div>
+<div data-page-node-id="h9bhDHZ09qxaUV4wTZldps" class="law"><!--pnid:3Auci4JqjCAsutYuulxSOG-->宪法三条：①错 1 次是意外，连错 2 次必须复盘 ②滚动 14 天 ≥80%，错过不清零 ③弹性卡每周每项 2 张，用了不丢人</div>
+
+<div data-page-node-id="7SXAaIhUnZjBtAw0bfY1k2" class="card">
+  <div data-page-node-id="4czGvNTRZsjcjVXhM5XdSN" class="hrow"><h2 data-page-node-id="U9RWBEBF6FI0vq9mQUMO8u"><!--pnid:hTtyZuwZVW36Rc4HFNJSWo-->今日概览</h2><span data-page-node-id="ICZ5qxQKhJh2v7d1yQMsx6" class="std"><!--pnid:ZF9kPmZPCT3CD5l7ZkIL3m-->打卡走微信回复 · 数据自动更新</span></div>
+  <div data-page-node-id="hMupy0hssr3eAv2qHnHvgj" class="chips" id="todayChips"></div>
+</div>
+
+<div data-page-node-id="XuUmP7b7V76PeukpkXItuu" class="card">
+  <div data-page-node-id="T3chfIYcTGbJfroXGXXoYV" class="hrow"><h2 data-page-node-id="WUjejVuWnCQTAhMP9Z7Hyf"><!--pnid:Xbg2gq5hTUpfDLsINjVZJU-->本周打卡完成情况</h2><span data-page-node-id="ojTsVRKRzDdBY74yXrmfcu" class="std" id="spanRange"><!--pnid:7t8Mqnqve9GdOCYgVq6WBz-->—</span></div>
+  <table data-page-node-id="n9oGAf1o9LiO7z1OEXNZNr" class="wk" id="wkTable"></table>
+  <div data-page-node-id="QLfC9OSbb1g4qI8l9Iy98M" class="wk-foot" id="wkFoot"></div>
+  <div data-page-node-id="8NY04FM9ke0UawmXG4LXma" class="alert" id="alertBox"></div>
+</div>
+
+<div data-page-node-id="9Zp0oR6iJT8upJg3DRQGqq" class="card">
+  <div data-page-node-id="Uv6uxmMinnXAKmNNNNLdnL" class="hrow"><h2 data-page-node-id="2WEaWqEFIbbAK4dWkY778f"><!--pnid:mXUbZkgEABWZBNi1HjPM1A-->14 天滚动达标率</h2><span data-page-node-id="TVc1J3UihjPOdYMrFulDV8" class="std"><!--pnid:jkmtFgnldle20Etbw5EDBS-->目标 ≥ 80%（✅ + 🟡 计入）</span></div>
+  <div data-page-node-id="a9HO7Bb9fknCQiQRHoRlg3" id="ratesBox" style="margin-top:14px"></div>
+</div>
+
+<div data-page-node-id="x2OC9kQn5riDYJA9cdoxhk" class="card">
+  <h2 data-page-node-id="uaSukMWXMmY5dd8Z3fAJ10"><!--pnid:6AutTRO5rB1ybvtLBLqspd-->14 天打卡情况</h2>
+  <div data-page-node-id="tJdd7xwqiKL0c9l54rzfmz" id="matrix"></div>
+  <h3 data-page-node-id="af7ahnRRcFhu5BXdZcWhbY"><!--pnid:FrLEt5GSE39h5lwervvxbf-->打卡记录</h3>
+  <div data-page-node-id="N4Hh1d2WivPkFRuxnMRGww" class="hist" id="histList"></div>
+</div>
+
+<div data-page-node-id="PnhiDCGvYqxN8LEJGrcgNv" class="card">
+  <h2 data-page-node-id="5jxKQPIh2ZNoQetrzOouTh"><!--pnid:zV8GXDcNym25KZqtGbM4K8-->起床时间趋势</h2>
+  <span data-page-node-id="OrjKHal3ue7SzQTO0bO9ws" class="std" id="energySummary"><!--pnid:jVhtrHkb8BTnxET4XVKjMJ-->近 14 天</span>
+  <div data-page-node-id="FEFRN3hzfzjs1SEoz482yu" class="energy-chart" id="energyChart"></div>
+</div>
+
+<script data-page-node-id="i7MINQ8yzHmqehxTgwDCZF" data-pnid-children="rLoJ8huhgqoJ10JLLA7jQe">
+(function(){
+  var db = window.__SMART_PAGE__.database;
+  var DATABASE_ID = '<资料库ID>';  // TODO: 替换为第1步创建的真实 database_id
+  var wd = ['日','一','二','三','四','五','六'];
+  var ITEMS = ['就寝','起床'];  // 加项目：在这里追加，如 ['就寝','起床','口播','冥想']
+  function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  function normDate(iso){ return iso ? String(iso).slice(0,10) : ''; }
+  function dayKey(dt){ return dt.getFullYear()+'-'+('0'+(dt.getMonth()+1)).slice(-2)+'-'+('0'+dt.getDate()).slice(-2); }
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  document.getElementById('todayLabel').textContent = '今天是 ' + todayStr() + ' 周' + wd[new Date().getDay()] + ' · 数据源：资料库 · 打卡走微信回复';
+  function clsOf(v){ if(!v) return ''; if(v.indexOf('✅')===0) return 'good'; if(v.indexOf('🟡')===0) return 'mid'; return 'bad'; }
+  function sCls(v){ if(!v) return 's-na'; if(v.indexOf('✅')===0) return 's-ok'; if(v.indexOf('🟡')===0) return 's-mid'; return 's-bad'; }
+  function bindable(el){ el.setAttribute('data-sp-bindable','database'); el.setAttribute('data-sp-database-id', DATABASE_ID); return el; }
+
+  function weekRange(){
+    var d = new Date(); var dow = d.getDay();
+    var diff = (dow === 0 ? 6 : dow - 1);
+    var ws = new Date(d); ws.setDate(ws.getDate()-diff);
+    var we = new Date(ws); we.setDate(we.getDate()+6);
+    return { ws: ws, we: we };
+  }
+  function fmtMd(dt){ return (dt.getMonth()+1)+'/'+dt.getDate(); }
+
+  function computeStats(map){
+    var out = { d14: {}, week: {}, weekRecs: [] };
+    ITEMS.forEach(function(nm){
+      var pass=0,total=0,ok=0,flx=0,mis=0;
+      for(var i=0;i<14;i++){
+        var dt = new Date(); dt.setDate(dt.getDate()-i);
+        var rec = map[dayKey(dt)]; var v = rec ? rec[nm] : null;
+        if(!v) continue; total++;
+        if(v.indexOf('✅')===0){ pass++; ok++; }
+        else if(v.indexOf('🟡')===0){ pass++; flx++; }
+        else { mis++; }
+      }
+      var consec=0;
+      for(var j=0;j<60;j++){
+        var dt2 = new Date(); dt2.setDate(dt2.getDate()-j);
+        var rec2 = map[dayKey(dt2)]; var v2 = rec2 ? rec2[nm] : null;
+        if(v2 && v2.indexOf('❌')===0){ consec++; } else { break; }
+      }
+      out.d14[nm] = { rate: total ? Math.round(pass/total*100) : 0, pass: pass, total: total, ok: ok, flx: flx, mis: mis, consec: consec };
+    });
+    var rng = weekRange();
+    var wEn={}; ITEMS.forEach(function(nm){ wEn[nm]={p:0,t:0}; });
+    var wSum=0,wCnt=0,reasons=[];
+    var d2 = new Date(rng.ws);
+    for(var k=0;k<7;k++){
+      var key = dayKey(d2);
+      var rec = map[key];
+      if(rec){
+        out.weekRecs.push({date:key, rec:rec});
+        ITEMS.forEach(function(nm){
+          var v = rec[nm]; if(!v) return;
+          wEn[nm].t++;
+          if(v.indexOf('✅')===0||v.indexOf('🟡')===0) wEn[nm].p++;
+          if(v.indexOf('❌')===0 && rec['未执行原因']) reasons.push(rec['未执行原因']);
+        });
+        if(rec['精力']){ wSum += rec['精力']; wCnt++; }
+      }
+      d2.setDate(d2.getDate()+1);
+    }
+    ITEMS.forEach(function(nm){
+      var s = wEn[nm];
+      var consec=0;
+      for(var j=0;j<7;j++){
+        var dt3 = new Date(rng.we); dt3.setDate(dt3.getDate()-j);
+        var rec3 = map[dayKey(dt3)]; var v3 = rec3 ? rec3[nm] : null;
+        if(v3 && v3.indexOf('❌')===0) consec++; else break;
+      }
+      out.week[nm] = { rate: s.t ? Math.round(s.p/s.t*100) : 0, total: s.t, pass: s.p, consec: consec };
+    });
+    out.week.energyAvg = wCnt ? +(wSum/wCnt).toFixed(1) : 0;
+    out.week.energyCnt = wCnt;
+    out.week.reasons = reasons;
+    out.week.ws = rng.ws; out.week.we = rng.we;
+    return out;
+  }
+
+  function renderToday(map){
+    var rec = map[todayStr()];
+    var box = document.getElementById('todayChips');
+    box.innerHTML = '';
+    ITEMS.forEach(function(nm){
+      var v = rec ? rec[nm] : null;
+      var chip = document.createElement('div');
+      var cls = v ? (v.indexOf('✅')===0?'d-ok':v.indexOf('🟡')===0?'d-mid':'d-bad') : '';
+      chip.className = 'chip ' + cls;
+      chip.innerHTML = '<span class="dot"></span><span>'+nm+'</span><span class="v">'+(v ? v.slice(0,1) : '–')+'</span>';
+      bindable(chip);
+      box.appendChild(chip);
+    });
+    var en = rec && rec['精力'];
+    var eChip = document.createElement('div');
+    eChip.className = 'chip d-blue';
+    eChip.innerHTML = '<span class="dot" style="background:var(--blue)"></span><span>精力</span><span class="v">'+(en ? en+'/5' : '–')+'</span>';
+    bindable(eChip);
+    box.appendChild(eChip);
+  }
+
+  function renderWeekTable(st){
+    var rng = st.week.ws;
+    var today = todayStr();
+    var thead = '<tr><th></th>';
+    var rows = {};
+    ITEMS.forEach(function(nm){ rows[nm] = '<tr><td class="dow">'+nm+'</td>'; });
+    var headDates = [];
+    for(var i=0;i<7;i++){
+      var d = new Date(rng); d.setDate(rng.getDate()+i);
+      var key = dayKey(d);
+      var isToday = (key === today);
+      headDates.push({key:key, isToday:isToday});
+      thead += '<th>'+(isToday?'<b>今</b>':'周'+wd[d.getDay()])+'</th>';
+    }
+    thead += '<th>精力</th></tr>';
+    var map = {};
+    st.weekRecs.forEach(function(r){ map[r.date]=r.rec; });
+    ITEMS.forEach(function(nm){
+      var cells = '';
+      headDates.forEach(function(h){
+        var rec = map[h.key];
+        var v = rec ? rec[nm] : null;
+        var s = v ? v.slice(0,1) : '·';
+        var cls = v ? sCls(v) : 's-na';
+        cells += '<td class="'+(h.isToday?'today':'')+'"><span class="s '+cls+'">'+s+'</span></td>';
+      });
+      var en = map[today] ? map[today]['精力'] : null;
+      rows[nm] += cells + '<td class="en">'+(en||'–')+'</td></tr>';
+    });
+    var html = thead;
+    ITEMS.forEach(function(nm){ html += rows[nm]; });
+    document.getElementById('wkTable').innerHTML = html;
+    document.getElementById('spanRange').textContent = fmtMd(st.week.ws)+' ~ '+fmtMd(st.week.we);
+  }
+
+  function renderWeekFoot(st){
+    var w = st.week;
+    var foot = document.getElementById('wkFoot');
+    var flxCnt = {};
+    ITEMS.forEach(function(nm){ flxCnt[nm]=0; });
+    st.weekRecs.forEach(function(r){
+      ITEMS.forEach(function(nm){
+        var v = r.rec[nm];
+        if(v && v.indexOf('🟡')===0) flxCnt[nm]++;
+      });
+    });
+    var html = '<div class="t">弹性卡（每周每项限 2 张）</div><div class="wk-items">';
+    ITEMS.forEach(function(nm){
+      var n = flxCnt[nm];
+      var cls = n>2?'bad':(n>0?'warn':'good');
+      html += '<span>'+nm+' <span class="n '+cls+'">'+n+'/2</span></span>';
+    });
+    var reasons = w.reasons;
+    html += '</div>';
+    if(reasons.length){
+      html += '<div class="t" style="margin-top:8px">本周未执行原因</div><div class="wk-items" style="gap:6px">' +
+        reasons.map(function(r){ return '<span class="tag t-mis">'+esc(r)+'</span>'; }).join('') + '</div>';
+    } else {
+      html += '<div class="t" style="margin-top:8px">未执行原因：<span style="color:var(--ok)">本周无未执行 ✓</span></div>';
+    }
+    html += '<div class="t" style="margin-top:8px">本周精力均值：<span style="font-size:15px;font-weight:500;color:var(--blue)">'+
+      (w.energyCnt ? w.energyAvg+'/5' : '–')+'</span>（'+w.energyCnt+' 天有记录）</div>';
+    foot.innerHTML = html;
+  }
+
+  function renderAlerts(st){
+    var ab = document.getElementById('alertBox');
+    var alerts = [];
+    ITEMS.forEach(function(nm){
+      var c = st.d14[nm].consec;
+      if(c>=2) alerts.push(nm+'已连错 '+c+' 次');
+    });
+    if(alerts.length){
+      ab.className = 'alert show';
+      ab.innerHTML = '⚠ Never Miss Twice 警报：' + alerts.join('；') + '<br>当周复盘三选一：降标准 / 改环境 / 该项退出';
+    } else {
+      ab.className = 'alert show none';
+      ab.textContent = '✓ 无连续未执行警报';
+    }
+  }
+
+  function renderRates(st){
+    var box = document.getElementById('ratesBox');
+    box.innerHTML = '';
+    ITEMS.forEach(function(nm){
+      var s = st.d14[nm];
+      var cls = s.rate>=80?'good':(s.rate>=60?'mid':'bad');
+      var div = document.createElement('div');
+      div.className = 'rate-row';
+      var okPct = s.total ? Math.round(s.ok/s.total*100) : 0;
+      var flxPct = s.total ? Math.round(s.flx/s.total*100) : 0;
+      var misPct = s.total ? 100-okPct-flxPct : 0;
+      div.innerHTML = '<div class="rate-head"><span class="lbl">'+nm+'</span><span class="val '+cls+'">'+s.rate+'% · '+s.pass+'/'+s.total+'</span></div>'+
+        '<div class="bar"><div class="b-ok" style="width:'+okPct+'%"></div><div class="b-flx" style="width:'+flxPct+'%"></div><div class="b-mis" style="width:'+misPct+'%"></div></div>'+
+        '<div class="std" style="margin-top:4px">✅ '+s.ok+' · 🟡 '+s.flx+' · ❌ '+s.mis+' ｜ 连续 ❌ '+s.consec+' 次'+(s.consec>=2?' · ⚠ 触发复盘':'')+'</div>';
+      bindable(div);
+      box.appendChild(div);
+    });
+  }
+
+  function parseTime(str){
+    if(!str) return null;
+    var m = String(str).match(/(\d{1,2})[:：.](\d{1,2})/);
+    if(!m) return null;
+    var h = parseInt(m[1],10), min = parseInt(m[2],10);
+    if(h>24 || min>59) return null;
+    return h + min/60;
+  }
+  function fmtTime(t){
+    if(t===null||t===undefined) return '–';
+    var h = Math.floor(t), m = Math.round((t-h)*60);
+    if(m===60){ h++; m=0; }
+    return h + ':' + ('0'+m).slice(-2);
+  }
+  function renderEnergy(map){
+    var chart = document.getElementById('energyChart');
+    var arr=[], sum=0, cnt=0;
+    for(var i=13;i>=0;i--){
+      var dt = new Date(); dt.setDate(dt.getDate()-i);
+      var rec = map[dayKey(dt)];
+      var t = rec ? parseTime(rec['起床备注']) : null;
+      arr.push({ k: (dt.getMonth()+1)+'/'+dt.getDate(), t: t });
+      if(t){ sum+=t; cnt++; }
+    }
+    chart.innerHTML = '';
+    arr.forEach(function(a){
+      var col = document.createElement('div');
+      col.className = 'e-bar';
+      var has = a.t !== null;
+      var h = 4;
+      if(has){
+        var mins = a.t*60; // 起床分钟数
+        var target = 7*60+20, red = 8*60+30, top = 5*60; // 5:00 = 满高
+        var ratio = Math.max(0, Math.min(1, (red - mins) / (red - top)));
+        h = Math.max(10, Math.round(ratio*92));
+      }
+      var cls = has ? (a.t<=7+20/60 ? 'e-col' : a.t<=8+30/60 ? 'e-col e-warn' : 'e-col e-bad') : 'e-col e-0';
+      col.innerHTML = '<div class="'+cls+'" style="height:'+h+'px"></div><div class="e-lbl">'+a.k+'</div>';
+      chart.appendChild(col);
+    });
+    var avg = cnt ? fmtTime(sum/cnt) : '–';
+    document.getElementById('energySummary').textContent = '近 14 天 · 平均起床 ' + avg + ' · 目标 ≤7:20 · 红线 8:30';
+  }
+
+  function renderStrip(map){
+    var box = document.getElementById('matrix');
+    box.innerHTML = '';
+    var dates = [];
+    for(var i=13;i>=0;i--){
+      var dt = new Date(); dt.setDate(dt.getDate()-i);
+      dates.push(dt);
+    }
+    ITEMS.forEach(function(nm){
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:3px;margin-top:8px';
+      var lbl = document.createElement('div');
+      lbl.style.cssText = 'width:34px;font-size:11px;color:var(--mut);flex-shrink:0';
+      lbl.textContent = nm;
+      bindable(lbl);
+      row.appendChild(lbl);
+      dates.forEach(function(dt){
+        var k = dayKey(dt);
+        var rec = map[k]; var v = rec ? rec[nm] : null;
+        var cls = v ? (v.indexOf('✅')===0?'c-ok':v.indexOf('🟡')===0?'c-flx':'c-mis') : '';
+        var c = document.createElement('div');
+        c.className = 'cell '+cls;
+        c.textContent = v ? (v.indexOf('✅')===0?'✓':v.indexOf('🟡')===0?'～':'✕') : dt.getDate();
+        c.title = k + ' ' + nm;
+        bindable(c);
+        row.appendChild(c);
+      });
+      box.appendChild(row);
+    });
+  }
+
+  function renderHist(results){
+    var list = document.getElementById('histList');
+    list.innerHTML = '';
+    results.slice(0,10).forEach(function(r){
+      var d = normDate(r['日期']);
+      var row = document.createElement('div');
+      row.className='hrow2';
+      var html = '<span style="min-width:82px">'+d+'</span>';
+      ITEMS.forEach(function(nm){
+        var v = r[nm];
+        if(v){ var t = v.indexOf('✅')===0?'t-ok':v.indexOf('🟡')===0?'t-flx':'t-mis'; html += '<span class="tag '+t+'">'+nm+' '+v.slice(0,1)+'</span>'; }
+        else { html += '<span class="tag t-none">'+nm+' –</span>'; }
+      });
+      if(r['精力']) html += '<span>精力 '+r['精力']+'</span>';
+      if(r['未执行原因']) html += '<span style="color:var(--mis)">原因：'+esc(r['未执行原因'])+'</span>';
+      if(r['一句话']) html += '<span>'+esc(r['一句话'])+'</span>';
+      row.innerHTML = html;
+      bindable(row);
+      list.appendChild(row);
+    });
+    if(!results.length){ list.innerHTML = '<div class="hrow2">还没有打卡记录</div>'; }
+  }
+
+  function loadAll(){
+    db.query({ databaseId: DATABASE_ID, sorts: [{ property: '日期', direction: 'descending' }], pageSize: 100 }).then(function(result){
+      var REC = result.results || [];
+      var map = {};
+      REC.forEach(function(r){ var d = normDate(r['日期']); if(d) map[d]=r; });
+      renderToday(map);
+      var st = computeStats(map);
+      renderWeekTable(st);
+      renderWeekFoot(st);
+      renderAlerts(st);
+      renderRates(st);
+      renderEnergy(map);
+      renderStrip(map);
+      renderHist(REC);
+    }).catch(function(){
+      document.getElementById('todayLabel').textContent = '数据加载失败，刷新重试';
+    });
+  }
+  loadAll();
+})();
+</script>
+</body>
+</html>
